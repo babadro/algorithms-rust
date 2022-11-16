@@ -1,1 +1,2 @@
 mod s0424_longest_repeating_character_replacement;
+mod s0567_permutation_in_string;
