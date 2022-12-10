@@ -3,3 +3,4 @@ mod s0055_jump_game;
 mod s0208_implement_trie;
 mod s0424_longest_repeating_character_replacement;
 mod s0567_permutation_in_string;
+mod s0706_design_hashmap;
