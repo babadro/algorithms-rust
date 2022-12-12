@@ -1,6 +1,7 @@
 mod s0030_substring_with_concatenation_of_all_words;
 mod s0055_jump_game;
 mod s0208_implement_trie;
+mod s0266_permute_palindrome;
 mod s0424_longest_repeating_character_replacement;
 mod s0567_permutation_in_string;
 mod s0706_design_hashmap;
