@@ -2,7 +2,7 @@ struct Solution;
 
 impl Solution {
     pub fn sorted_squares(nums: Vec<i32>) -> Vec<i32> {
-        let mut res = vec![0].repeat(nums.len());
+        let mut res = vec![0; nums.len()];
         let mut i = 0;
         let mut j = nums.len() - 1;
 
