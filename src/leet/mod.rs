@@ -9,4 +9,5 @@ mod s0266_permute_palindrome;
 mod s0424_longest_repeating_character_replacement;
 mod s0567_permutation_in_string;
 mod s0706_design_hashmap;
+mod s0713_subarray_product_less_than_k;
 mod s0977_squares_of_a_sorted_array;
