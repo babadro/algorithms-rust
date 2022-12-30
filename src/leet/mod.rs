@@ -11,4 +11,5 @@ mod s0454_4sum_ii;
 mod s0567_permutation_in_string;
 mod s0706_design_hashmap;
 mod s0713_subarray_product_less_than_k;
+mod s0844_backspace_string_compare;
 mod s0977_squares_of_a_sorted_array;
