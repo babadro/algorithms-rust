@@ -5,6 +5,8 @@ struct Solution;
 
 impl Solution {
     // todo 1: avoid cloning
+    // options to avoid cloning:
+    // a - using RefCell maybe, b - using unsafe
     pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut slow = head.as_ref();
         let mut fast = head.as_ref();
@@ -14,6 +16,25 @@ impl Solution {
             fast = fast.unwrap().next.as_ref().unwrap().next.as_ref();
         }
         slow.cloned()
+    }
+
+    // two passes, but without cloning
+    pub fn middle_node2(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut counter: i32 = 0;
+
+        let mut curr_node = head.as_ref();
+
+        while curr_node.is_some() {
+            counter += 1;
+            curr_node = curr_node.unwrap().next.as_ref();
+        }
+
+        let mut middle = head;
+        for _ in 0..counter / 2 {
+            middle = middle.unwrap().next;
+        }
+
+        middle
     }
 }
 
