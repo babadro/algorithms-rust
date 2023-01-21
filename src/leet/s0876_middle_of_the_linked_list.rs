@@ -4,6 +4,7 @@ use std::ops::Deref;
 struct Solution;
 
 impl Solution {
+    // todo 1: avoid cloning
     pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut slow = head.as_ref();
         let mut fast = head.as_ref();
@@ -12,10 +13,12 @@ impl Solution {
             slow = slow.unwrap().next.as_ref();
             fast = fast.unwrap().next.as_ref().unwrap().next.as_ref();
         }
-
         slow.cloned()
     }
 }
+
+// todo 2: implement this signature
+// pub fn middle_node(head: &Option<Box<ListNode>>) -> &Option<Box<ListNode>>
 
 #[cfg(test)]
 mod tests {
