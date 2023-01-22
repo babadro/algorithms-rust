@@ -1,12 +1,14 @@
-use crate::helpers::linked_list::ListNode;
+use crate::helpers::linked_list::{ListNode, ListNodeRc};
 use std::ops::Deref;
+use std::rc::Rc;
 
 struct Solution;
 
 impl Solution {
+    // two pointers. best algorithm
     // todo 1: avoid cloning
     // options to avoid cloning:
-    // a - using RefCell maybe, b - using unsafe
+    // a - using RefCell maybe, b - using unsafe, c - using lifetime?
     pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut slow = head.as_ref();
         let mut fast = head.as_ref();
