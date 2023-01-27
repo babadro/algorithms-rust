@@ -8,7 +8,7 @@ impl Solution {
     // two pointers. best algorithm
     // todo 1: avoid cloning
     // options to avoid cloning:
-    // a - using RefCell maybe, b - using unsafe, c - using lifetime?
+    // a - using RefCell maybe, b - using lifetime?
     pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut slow = head.as_ref();
         let mut fast = head.as_ref();
@@ -17,6 +17,7 @@ impl Solution {
             slow = slow.unwrap().next.as_ref();
             fast = fast.unwrap().next.as_ref().unwrap().next.as_ref();
         }
+
         slow.cloned()
     }
 
@@ -37,6 +38,21 @@ impl Solution {
         }
 
         middle
+    }
+
+    // without "cloned()" using unsafe
+    pub fn middle_node3(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut fast = &head as *const Option<Box<ListNode>>;
+        let mut slow = head;
+
+        unsafe {
+            while (*fast).is_some() && (*fast).as_ref().unwrap().next.is_some() {
+                fast = &(*fast).as_ref().unwrap().next.as_ref().unwrap().next;
+                slow = slow.unwrap().next;
+            }
+
+            slow
+        }
     }
 }
 
@@ -61,7 +77,7 @@ mod tests {
         for (input, want) in test_cases.iter() {
             let head = vector_to_linked_list(input);
 
-            let got = Solution::middle_node(head);
+            let got = Solution::middle_node3(head);
 
             assert_eq!(got.unwrap().val, *want);
         }
