@@ -1,0 +1,67 @@
+fn main() {
+    let x = &5;
+    let result;
+
+    {
+        let y = &10;
+        result = max(x, y);
+    }
+
+    println!("The result is {}", result);
+
+    let a1 = 1;
+    let res: &i32;
+    {
+        let b1 = 2;
+        res = min_lifetime(&a1, &b1);
+    }
+
+    println!("The result is {}", "ыфв");
+}
+
+fn max<'a>(a: &'a i32, b: &'a i32) -> &'a i32 {
+    if a > b {
+        a
+    } else {
+        &0
+    }
+}
+
+fn temp<'a>(var1: &'a i32) -> i32 {
+    1
+}
+
+fn max2<'a, 'b>(a: &'a i32, b: &'b i32) -> &'b i32 {
+    if a > b {
+        a
+    } else {
+        b
+    }
+}
+
+fn min_lifetime<'a>(a: &'a i32, b: &'a i32) -> &'a i32 {
+    a
+}
+
+fn return_num() -> &'static i32 {
+    &5
+}
+
+/*
+let x = &5;
+    let result: &i32;
+    {
+        let y = &10;
+        result = max(x, y);
+
+        println!("{}", x);
+        println!("{}", y);
+    }
+
+    println!("{}", result);
+ */
+
+//fn as_str(data: &u32) -> &str {
+//    let s = format!("{}", data);
+//    &s
+//}
