@@ -16,7 +16,7 @@ impl Solution {
             new_interval[0] = cmp::min(new_interval[0], intervals[0][0]);
             new_interval[1] = cmp::max(new_interval[1], intervals[0][1]);
 
-            intervals.remove(0);
+            intervals.pop_front();
         }
 
         res.push(new_interval);
