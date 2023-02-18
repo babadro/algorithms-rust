@@ -8,6 +8,7 @@ mod s0208_implement_trie;
 mod s0259_3sum_smaller;
 mod s0266_permute_palindrome;
 mod s0424_longest_repeating_character_replacement;
+mod s0435_non_overlapping_intervals;
 mod s0454_4sum_ii;
 mod s0567_permutation_in_string;
 mod s0706_design_hashmap;
