@@ -7,6 +7,7 @@ mod s0128_longest_consecutive_sequence;
 mod s0208_implement_trie;
 mod s0259_3sum_smaller;
 mod s0266_permute_palindrome;
+mod s0268_missing_number;
 mod s0424_longest_repeating_character_replacement;
 mod s0435_non_overlapping_intervals;
 mod s0454_4sum_ii;
