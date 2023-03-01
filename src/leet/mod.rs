@@ -11,6 +11,7 @@ mod s0268_missing_number;
 mod s0287_find_duplicate_number;
 mod s0424_longest_repeating_character_replacement;
 mod s0435_non_overlapping_intervals;
+mod s0442_find_all_duplicates_in_an_array;
 mod s0454_4sum_ii;
 mod s0567_permutation_in_string;
 mod s0706_design_hashmap;
