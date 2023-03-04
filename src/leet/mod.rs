@@ -1,5 +1,6 @@
 mod s0015_3sum;
 mod s0030_substring_with_concatenation_of_all_words;
+mod s0041_first_missing_positive;
 mod s0055_jump_game;
 mod s0057_insert_interval;
 mod s0070_climbing_stairs;
