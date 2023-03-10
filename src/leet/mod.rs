@@ -5,6 +5,7 @@ mod s0055_jump_game;
 mod s0057_insert_interval;
 mod s0070_climbing_stairs;
 mod s0128_longest_consecutive_sequence;
+mod s0206_reverse_linked_list;
 mod s0208_implement_trie;
 mod s0259_3sum_smaller;
 mod s0266_permute_palindrome;
