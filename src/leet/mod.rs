@@ -22,4 +22,5 @@ mod s0713_subarray_product_less_than_k;
 mod s0844_backspace_string_compare;
 mod s0876_middle_of_the_linked_list;
 mod s0977_squares_of_a_sorted_array;
+mod s2074_reverse_nodes_in_even_length_groups;
 mod temp;
