@@ -5,45 +5,45 @@ struct Solution;
 // todo doesn't work
 impl Solution {
     pub fn reverse_even_length_groups(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut cur = head;
-        head = None;
-        let mut prev: &mut Option<Box<ListNode>> = &mut head;
+        let mut result = None;
+        let mut result_tail = &mut result;
 
-        let mut expected_len = 0;
+        let (mut g_head, mut g_count) = (None, 0);
 
-        while cur.is_some() {
-            expected_len += 1;
-            let mut actual_len = 0;
-
-            let mut tmp_cur = &cur;
-            while tmp_cur.is_some() && actual_len < expected_len {
-                tmp_cur = &tmp_cur.as_ref().unwrap().next;
-
-                actual_len += 1
-            }
-
-            if actual_len % 2 == 1 {
-                // todo
-                for _ in 0..actual_len {
-                    cur = cur.unwrap().next;
+        let mut expected_len = 1;
+        while let Some(mut node) = head {
+            head = node.next.take();
+            if expected_len % 2 == 1 || g_count == 0 {
+                if let Some(group) = g_head.replace(node) {
+                    _ = result_tail.insert(group);
+                    while let Some(node) = result_tail {
+                        result_tail = &mut node.next;
+                    }
                 }
-
-                continue;
+            } else {
+                g_head.insert(node).next = g_head.take();
             }
 
-            for _ in 0..actual_len {
-                let mut n = cur.take().unwrap();
-                cur = n.next.take();
-                n.next = prev.take();
-                *prev = Some(n);
-            }
-
-            for _ in 0..actual_len {
-                prev = &mut prev.as_mut().unwrap().next;
+            g_count += 1;
+            if g_count == expected_len {
+                (g_count, expected_len) = (0, expected_len + 1)
             }
         }
 
-        head
+        // todo fix condition
+        if g_count % 2 == 1 {
+            let mut tail_head = g_head.take();
+            while let Some(mut node) = tail_head {
+                tail_head = node.next.take();
+                g_head.insert(node).next = g_head.take();
+            }
+        }
+
+        if let Some(tail) = g_head {
+            _ = result_tail.insert(tail);
+        }
+
+        result
     }
 }
 
@@ -56,10 +56,10 @@ mod tests {
     fn test_reverse_even_length_groups() {
         let test_cases = [
             //(vec![1], vec![1]),
-            (vec![1, 2], vec![1, 2]),
-            //(vec![1, 2, 3], vec![1, 3, 2]),
+            //(vec![1, 2], vec![1, 2]),
+            // (vec![1, 2, 3], vec![1, 3, 2]),
             //(vec![1, 2, 3, 4], vec![1, 3, 2, 4]),
-            //(vec![1, 2, 3, 4, 5], vec![1, 3, 2, 5, 4]),
+            (vec![1, 2, 3, 4, 5], vec![1, 3, 2, 5, 4]),
             //(vec![1, 2, 3, 4, 5, 6], vec![1, 3, 2, 4, 5, 6]),
             //(vec![1, 2, 3, 4, 5, 6, 7], vec![1, 3, 2, 4, 5, 6, 7]),
             //(vec![1, 2, 3, 4, 5, 6, 7, 8], vec![1, 3, 2, 4, 5, 6, 8, 7]),
